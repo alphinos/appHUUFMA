@@ -1,0 +1,18 @@
+[project]
+name = "flaskr"
+authors = [
+    {name = "Carlos Veras", email = "pessoal.carlosveras@gmail.com"},
+    {name = "Francisco Glaubos", email = ""}
+]
+version = "0.1"
+description = "An app that can allocate patients in the right terapy beds."
+readme = "README.md"
+requires-python = ">=3.11.3"
+dependencies = [
+    "flask",
+    "gurobipy"
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
