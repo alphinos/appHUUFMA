@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - Huufma</title>
+    <link rel = "stylesheet" href = "{{ url_for( 'static', filename = 'style.css' ) }}" >
+</head>
+<body>
+    
+    <main>
+
+        <section class = "start">
+
+            <h1>Otimização da Alocação de Leitos de UTI</h1>
+            <h4>Eficiente. Eficaz. Essencial.</h4>
+            <p>Nossa solução de software simplifica a gestão de leitos de UTI, garantindo um atendimento ao paciente e eficiência hospitalar otimizados.</p>
+
+            <div class = "about-button">
+                <a href="#about">Saiba mais</a>
+            </div>
+
+            <div class = "contact-button">
+                <a href="#contact">Contate-nos</a>
+            </div>
+
+            <div class = "image show">
+
+            </div>
+
+        </section>
+
+        <section class = "about">
+            
+            <h1>Principais características</h1>
+
+            <div class = "about-card">
+                
+                <div class = "icon">
+
+                </div>
+
+                <h4>Rastreamento de Leitos em Tempo Real</h4>
+                <p> Monitore a disponibilidade de leitos de UTI em tempo real,
+                    garantindo uma resposta imediata às mudanças nas necessidades dos pacientes.</p>
+                <a href = "">Saiba mais</a>
+
+            </div>
+
+            <div class = "about-card">
+                
+                <div class = "icon">
+
+                </div>
+
+                <h4>Análise Preditiva</h4>
+                <p> Nosso software utiliza algoritmos avançados para prever
+                    futuras necessidades de leitos de UTI com base nos dados atuais dos pacientes.</p>
+                <a href = "{{ url_for( 'bp_solver.solver' ) }}">Saiba mais</a>
+
+            </div>
+
+
+            <div class = "about-card">
+                
+                <div class = "icon">
+
+                </div>
+
+                <h4>Suporte à Decisão</h4>
+                <p> Fornecemos insights acionáveis para orientar a tomada de decisões,
+                    melhorando os resultados dos pacientes e a eficiência operacional.</p>
+                <a href = "">Saiba mais</a>
+
+            </div>
+
+        </section>
+
+        <section class = "contact">
+            <h1>Contate-nos</h1>
+            <h4>Estamos aqui para ajudar. Entre em contato conosco para saber mais sobre nosso software ou para agendar uma demonstração.</h4>
+
+            <form>
+
+                <label>Nome</label>
+                <input>
+
+                <label>Email</label>
+                <input>
+
+                <label>Mensagem</label>
+                <input>
+
+                <input type = "submit" value = "Enviar mensagem">
+
+            </form>
+            
+        </section>
+
+    </main>
+
+    <footer>
+
+
+
+    </footer>
+
+</body>
+</html>
