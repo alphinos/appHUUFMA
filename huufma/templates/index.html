@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %} - Huufma</title>
+    <title>Home - Huufma</title>
     <link rel = "stylesheet" href = "{{ url_for( 'static', filename = 'style.css' ) }}" >
 </head>
 <body>
@@ -12,88 +12,110 @@
 
         <section class = "start">
 
-            <h1>Otimização da Alocação de Leitos de UTI</h1>
-            <h4>Eficiente. Eficaz. Essencial.</h4>
-            <p>Nossa solução de software simplifica a gestão de leitos de UTI, garantindo um atendimento ao paciente e eficiência hospitalar otimizados.</p>
+            <div class = "text">
 
-            <div class = "about-button">
-                <a href="#about">Saiba mais</a>
+                <h1>Otimização da Alocação de Leitos de UTI</h1>
+                <h4>Eficiente. Eficaz. Essencial.</h4>
+                <p> Nossa solução de software simplifica a gestão de leitos de UTI,
+                    garantindo um atendimento ao paciente e eficiência hospitalar otimizados.
+                </p>
+            
+                <div class = "buttons">
+
+                    <a class = "about-button" href="#about">Saiba mais</a>
+        
+                    <a class = "contact-button" href="#contact">Contate-nos</a>
+
+                </div>
+
             </div>
 
-            <div class = "contact-button">
-                <a href="#contact">Contate-nos</a>
-            </div>
 
-            <div class = "image show">
-
+            <div class = "show">
+                <img src = "{{ src_img }}" >
             </div>
 
         </section>
 
-        <section class = "about">
+        <section id = "about" class = "about">
             
             <h1>Principais características</h1>
 
-            <div class = "about-card">
-                
-                <div class = "icon">
+            <div class = "cards">
 
+                <div class = "card">
+                    
+                    <div class = "icon"></div>
+    
+                    <h4>Rastreamento de Leitos em Tempo Real</h4>
+                    <p> Monitore a disponibilidade de leitos de UTI em tempo real,
+                        garantindo uma resposta imediata às mudanças nas necessidades dos pacientes.</p>
+                    <a href = "">Saiba mais</a>
+    
                 </div>
-
-                <h4>Rastreamento de Leitos em Tempo Real</h4>
-                <p> Monitore a disponibilidade de leitos de UTI em tempo real,
-                    garantindo uma resposta imediata às mudanças nas necessidades dos pacientes.</p>
-                <a href = "">Saiba mais</a>
-
-            </div>
-
-            <div class = "about-card">
-                
-                <div class = "icon">
-
+    
+                <div class = "card">
+                    
+                    <div class = "icon"></div>
+    
+                    <h4>Análise Preditiva</h4>
+                    <p> Nosso software utiliza algoritmos avançados para prever
+                        futuras necessidades de leitos de UTI com base nos dados atuais dos pacientes.</p>
+                    <a href = "{{ url_for( 'bp_solver.solver' ) }}">Saiba mais</a>
+    
                 </div>
-
-                <h4>Análise Preditiva</h4>
-                <p> Nosso software utiliza algoritmos avançados para prever
-                    futuras necessidades de leitos de UTI com base nos dados atuais dos pacientes.</p>
-                <a href = "{{ url_for( 'bp_solver.solver' ) }}">Saiba mais</a>
-
-            </div>
-
-
-            <div class = "about-card">
-                
-                <div class = "icon">
-
+    
+    
+                <div class = "card">
+                    
+                    <div class = "icon"></div>
+    
+                    <h4>Suporte à Decisão</h4>
+                    <p> Fornecemos insights acionáveis para orientar a tomada de decisões,
+                        melhorando os resultados dos pacientes e a eficiência operacional.</p>
+                    <a href = "">Saiba mais</a>
+    
                 </div>
-
-                <h4>Suporte à Decisão</h4>
-                <p> Fornecemos insights acionáveis para orientar a tomada de decisões,
-                    melhorando os resultados dos pacientes e a eficiência operacional.</p>
-                <a href = "">Saiba mais</a>
 
             </div>
 
         </section>
 
-        <section class = "contact">
+        <section id = "contact" class = "contact">
             <h1>Contate-nos</h1>
-            <h4>Estamos aqui para ajudar. Entre em contato conosco para saber mais sobre nosso software ou para agendar uma demonstração.</h4>
+            <p>Estamos aqui para ajudar. Entre em contato conosco para saber mais sobre nosso software ou para agendar uma demonstração.</p>
 
             <form>
 
-                <label>Nome</label>
-                <input>
+                <div class = "username-input">
 
-                <label>Email</label>
-                <input>
+                    <label for = "username">Nome</label>
+                    <input name = "name" id = "username" required>
 
-                <label>Mensagem</label>
-                <input>
+                </div>
 
-                <input type = "submit" value = "Enviar mensagem">
+                <div class = "email-input">
+
+                    <label for = "email">Email</label>
+                    <input name = "email" id = "email" type = "email" required>
+
+                </div>
+
+                <div class = "message-input">
+
+                    <label for = "message">Mensagem</label>
+                    <textarea name = "message" id = "message" ></textarea>
+
+                </div>
+
+                <input type = "submit" value = "Contact Us">
 
             </form>
+
+            <div class = "horizontal-line"></div>
+
+            <p>info_uti@omtimizacao_lore.com</p>
+            <p>123 Rua Saúde, Cidade Médica, 56789</p>
             
         </section>
 
@@ -101,7 +123,15 @@
 
     <footer>
 
+        <div class = "logo">
+            <img src="{{ logo }}">
+        </div>
 
+        <h1>Lore.com</h1>
+
+        <div class = "vertical-line"></div>
+
+        <p>© 2023 LORE Otimização UTI — @OtimizacaoUTI.LORE</p>
 
     </footer>
 

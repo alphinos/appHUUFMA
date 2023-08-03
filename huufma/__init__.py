@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, redirect
 
 from . import home
 from . import bp_solver
@@ -20,6 +20,10 @@ def create_app( test_config = None ):
     else:
         # Load the test config if passed in
         app.config.from_mapping( test_config )
+
+    @app.route( "/" )
+    def start():
+        return redirect( "/home" )
     
     app.register_blueprint( home.bp )
 
