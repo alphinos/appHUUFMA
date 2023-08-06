@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Answer{% endblock %}
+
+{% block content %}
+
+    <div>
+
+        <h1>UTI</h1>
+
+        {% for sol in solution[0] %}
+
+            <div>
+
+                <h4>{{ sol[0] }}</h4>
+                <h4>{{ sol[1] }}</h4>
+                <h4>{{ sol[2] }}</h4>
+                <h4>{{ sol[3] }}</h4>
+                <h4>{{ sol[4] }}</h4>
+            
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div>
+
+        <h1>UTSI</h1>
+
+        {% for sol in solution[1] %}
+
+            <div>
+
+                <h4>{{ sol[0] }}</h4>
+                <h4>{{ sol[1] }}</h4>
+                <h4>{{ sol[2] }}</h4>
+                <h4>{{ sol[3] }}</h4>
+                <h4>{{ sol[4] }}</h4>
+            
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div>
+
+        <h1>UTP</h1>
+
+        {% for sol in solution[2] %}
+
+            <div>
+
+                <h4>{{ sol[0] }}</h4>
+                <h4>{{ sol[1] }}</h4>
+                <h4>{{ sol[2] }}</h4>
+                <h4>{{ sol[3] }}</h4>
+                <h4>{{ sol[4] }}</h4>
+            
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div>
+
+        <h1>Não selecionados</h1>
+
+        {% for sol in solution[3] %}
+
+            <div>
+
+                <h4>{{ sol[0] }}</h4>
+                <h4>{{ sol[1] }}</h4>
+                <h4>{{ sol[2] }}</h4>
+                <h4>{{ sol[3] }}</h4>
+                <h4>{{ sol[4] }}</h4>
+            
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

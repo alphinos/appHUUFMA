@@ -35,289 +35,9 @@ a {
     text-decoration: none;
 }
 
-/* Start */
-.start {
-    min-width: var( --hu-min-width );
-    min-height: var( --hu-min-height );
-    box-sizing: content-box;
+/* Header and Footer */
 
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-}
-
-.start .text {
-    box-sizing: border-box;
-    width: 600px;
-    height: 325px;
-
-    text-align: center;
-    margin: 40px;
-}
-
-.start .text h4 {
-    margin: 10px 0;
-}
-
-.start .text p {
-    margin: 10px 0;
-}
-
-.show {
-    position: relative;
-    display: flex;
-    box-sizing: content-box;
-
-    width: 600px;
-    height: 600px;
-    overflow: hidden;
-
-    border-radius: 10px;
-    justify-content: center;
-    margin: 40px;
-    
-    right: 0px;
-}
-
-.show img {
-    height: 100%;
-}
-
-
-.buttons {
-    position: relative;
-    display: flex;
-    box-sizing: content-box;
-
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.buttons a {
-
-    display: flex;
-
-    width: 200px;
-    height: 48px;
-
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    padding: 20px, 25px;
-    margin: 30px 40px;
-
-    border-radius: 10px;
-}
-
-.about-button {
-    width: 200px;
-    height: 48px;
-    background: var( --hu-red-pink );
-}
-
-.contact-button {
-    background: var( --hu-dark-blue );
-}
-
-.about-button, .contact-button {
-    color: var( --hu-white );
-}
-.about-button:hover {
-    background: var( --hu-white );
-    border: solid 1px var( --hu-dark-blue );
-    color: var( --hu-red-pink );
-}
-
-.contact-button:hover {
-    background: var( --hu-white );
-    border: solid 1px var( --hu-dark-blue );
-    color: var( --hu-dark-blue );
-}
-
-
-/* About */
-.about {
-    min-height: var( --hu-min-height );
-    background: var( --hu-dark-blue );
-
-    box-sizing: border-box;
-
-    display: flex;
-    flex-wrap: wrap;
-
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.about h1 {
-
-    display: flex;
-
-    color: var( --hu-white );
-    width: 700px;
-    height: 100px;
-
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.cards {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.card {
-    box-sizing: border-box;
-
-    width: 380px;
-    height: 330px;
-
-    margin: 20px;
-
-    text-align: center;
-    
-    background: var( --hu-white );
-    border-radius: 10px;
-    box-shadow: 0 4px 40px rgba(100, 100, 100, 0.4);
-}
-
-.card .icon {
-    width: 50px;
-    height: 50px;
-    background: var( --hu-dark-blue );
-
-    border-radius: 100%;
-
-    margin: 20px 30px;
-}
-
-.card h4 {
-    width: 260px;
-    height: 50px;
-    text-align: left;
-    margin: 0 auto;
-}
-
-.card p {
-    width: 260px;
-    height: 130px;
-    text-align: justify;
-    margin: 0 auto;
-}
-
-.card a {
-
-    display: flex;
-
-    width: 260px;
-    text-align: left;
-    margin: 0 auto;
-
-    color: var( --hu-red-pink );
-}
-
-/* Contact */
-.contact {
-    min-height: var( --hu-min-height );
-
-    box-sizing: border-box;
-}
-
-.contact h1 {
-    display: flex;
-    width: 700px;
-    height: 100px;
-
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    margin: 0 auto;
-}
-
-.contact p {
-    display: flex;
-    width: 800px;
-    height: 50px;
-
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    margin: 0 auto;
-}
-
-.contact form {
-    width: 660px;
-    height: 330px;
-    margin: 0 auto;
-
-    display: flex;
-    flex-wrap: wrap;
-
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.contact .username-input, .contact .email-input {
-    display: flex;
-    flex-wrap: wrap;
-
-    width: 320px;
-}
-
-.contact .message-input {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.contact .username-input {
-    margin-right: 10px;
-}
-
-.contact .email-input {
-    margin-left: 10px;
-}
-
-.contact .username-input input, .contact .email-input input {
-    width: 320px;
-    height: 40px;
-}
-
-.contact #message {
-    width: 660px;
-    height: 150px;
-}
-
-.contact input[ type = submit ]{
-    width: 200px;
-    height: 50px;
-
-    background: var( --hu-red-pink );
-    border-radius: 15px;
-
-    color: var( --hu-white );
-}
-
-.horizontal-line {
-    height: 2px;
-    width: 660px;
-    background: var( --hu-dark-blue );
-    margin: 20px auto;
-}
-
-/* Footer */
-footer {
-
+header, footer {
     display: flex;
     position: relative;
 
@@ -332,8 +52,8 @@ footer {
 .logo {
     box-sizing: content-box;
 
-    width: 100px;
-    height: 100px;
+    width: 15vh;
+    height: 15vh;
     overflow: hidden;
 
     border-radius: 10px;
@@ -344,16 +64,30 @@ footer {
     width: 100%;
 }
 
-footer h1 {
-    width: 190px;
-}
-
 .vertical-line {
     width: 2px;
-    height: 60px;
+    height: 10vh;
     background: var( --hu-white );
 }
 
+header h1, footer h1 {
+    width: 190px;
+}
+
+/* Header */
+
+header .solver_allocation {
+    width: 420px;
+}
+
+/* Footer */
+
 footer p {
     width: 420px;
+}
+
+/* main */
+
+main {
+    min-height: 70vh;
 }

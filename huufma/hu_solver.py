@@ -1,7 +1,13 @@
 import gurobipy as grbp
 from gurobipy import GRB
+from . import hu_utility as hu_util
 
-def solverHU( patients : list, qtdUTI : int, qtdUTSI : int, qtdUTP : int ) -> None:
+def solverHU( patients : list[ hu_util.Patient ], qtdUTI : int, qtdUTSI : int, qtdUTP : int ) -> list:
+
+    print( *patients )
+    print( qtdUTI )
+    print( qtdUTSI )
+    print( qtdUTP )
 
     qtd_patients = len( patients )
     
@@ -34,14 +40,14 @@ def solverHU( patients : list, qtdUTI : int, qtdUTSI : int, qtdUTP : int ) -> No
                     # Na posição 0, está a chance de sobrevivência
                     # Na posição 1, está uma lista com as prioridades de cada paciente
                     # para cada tipo de leito
-                    if patients[i1][1][j] > patients[i2][1][j]:
+                    if patients[i1].ls_beds[j] > patients[i2].ls_beds[j]:
                         sum_prioridade += x[i1, j, k] - x[i2, j, k]
 
     sum_ = 0
     for i in I:
         for j in J:
             for k in K_Types[j]:
-                sum_ += x[i, j, k] * patients[i][0]
+                sum_ += x[i, j, k] * patients[i].surviving_chance
 
     m.setObjective( sum_ + sum_prioridade, sense = grbp.GRB.MAXIMIZE )
 
@@ -77,12 +83,30 @@ def solverHU( patients : list, qtdUTI : int, qtdUTSI : int, qtdUTP : int ) -> No
     #Execute
     m.optimize()
 
-    qtd_Alocated = 0
-    total_Chance = 0
-    print()
+    # Gerar dados de retorno
+
+    suggestion = list()
+
+    allocated_uti = list()
+    allocated_utsi = list()
+    allocated_utp = list()
+
+    non_allocated = list()
+
+    suggestion = [ allocated_uti, allocated_utsi, allocated_utp, non_allocated ]
+
     for j in J:
         for k in K_Types[j]:
             for i in I:
                 if x[i, j, k].X == 1:
-                    qtd_Alocated += 1
-                    total_Chance += patients[i][0]
+                    patients[ i ].allocated = True
+                    patient_ = [ patients[i].name, patients[i].surviving_chance, patients[i].uti_chance, patients[i].utsi_chance, patients[i].utp_chance ]
+                    suggestion[ j ].append( patient_ )
+                    print( patient_[0], patient_[1], patient_[2], patient_[3], patient_[4] )
+
+    for patient in patients:
+        if patient.allocated == False:
+            patient_ = [ patients[i].name, patients[i].surviving_chance, patients[i].uti_chance, patients[i].utsi_chance, patients[i].utp_chance ]
+            non_allocated.append( patient_ )
+    
+    return suggestion
