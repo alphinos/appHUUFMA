@@ -24,4 +24,10 @@ def home():
     src_img = url_for( 'static', filename = f'show/{ chose_img }.jpg' )
     logo = url_for( 'static', filename = 'LORE-logo-black.png' )
 
-    return render_template( "index.html", src_img = src_img, logo = logo )
+    session[ "patients" ] = None
+    session[ "n_patients" ] = 0
+    session[ "n_uti" ] = 0
+    session[ "n_utsi" ] = 0
+    session[ "n_utp" ] = 0
+
+    return render_template( "index.html.jinja", src_img = src_img, logo = logo )

@@ -15,7 +15,7 @@ def genPatient( i : int ):
     utsi = randint(1, 5)
     utp = randint(1, 5)
     
-    patient = hu_utility.Patient( f"patient_{i}", chance, uti, utsi, utp )
+    patient = [ f"patient_{i}", chance, uti, utsi, utp ]
     return patient
 
 def generatePatientList(qtd_items: int) -> list[hu_utility.Patient]:
@@ -29,7 +29,7 @@ def writeInstances( patients : list[hu_utility.Patient], uti : int, utsi : int, 
         f.write( f"{ uti } { utsi } { utp }" )
 
         for patient in patients:
-            f.write( f"{ patient.name } { patient.surviving_chance } { patient.uti_chance } { patient.utsi_chance } { patient.utp_chance }" )
+            f.write( f"{ patient[0] } { patient[1] } { patient[2] } { patient[3] } { patient[4] }" )
 
 def countFilesInDir( pathDir : str ):
     counter : int = 0

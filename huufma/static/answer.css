@@ -1,0 +1,178 @@
+
+.recomendation {
+    background: var( --Major );
+    width: 400px;
+    height: 90px;
+
+    margin: 15px calc( (100vw - 400px) / 2 );
+
+    color: var( --Base );
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid var( --Minor );
+    border-radius: 15px;
+}
+
+.principal {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 360px;
+    min-height: 480px;
+
+    background: var( --Major );
+
+    border: 1px solid var( --Minor );
+    border-radius: 15px;
+
+    margin: 20px 5vw;
+}
+
+.card h1 {
+    width: 80%;
+    text-align: center;
+    margin: 20px auto;
+
+    color: var( --Base );
+}
+
+.row {
+    width: 350px;
+    height: 50px;
+
+    border: 1px solid var( --Minor );
+    border-radius: 15px;
+
+    margin: 2px auto;
+
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+}
+
+.number {
+    width: 40px;
+    aspect-ratio: 1/1;
+
+    background: var( --Minor );
+    border: 1px solid black;
+    border-radius: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.number h4 {
+    color: var( --Base );
+}
+
+.name {
+    width: calc( 90% - 40px );
+    height: 40px;
+
+    background: var( --Minor );
+    border: 1px solid black;
+    border-radius: 15px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.name h4 {
+    color: var( --Base );
+}
+
+.feedback {
+
+    box-sizing: border-box;
+
+    padding: 40px;
+    width: 360px;
+    height: 480px;
+
+    display: flex;
+
+    flex-direction: column;
+    
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+
+    border-radius: 15px;
+    
+    color: var( --Minor );
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.feedback h5 {
+    font-size: 20px;
+}
+
+.feedback form {
+    height: 100px;
+    display: flex;
+
+    flex-direction: column;
+    
+    justify-content: space-around;
+    align-items: center;
+}
+
+.feedback .selection {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.feedback .selection input[ type = radio ] {
+    width: 15px;
+    height: 15px;
+
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+
+    margin: 0 5px;
+}
+
+.feedback .selection label {
+    font-size: 20px;
+    font-weight: 800;
+
+    color: var( --Minor );
+
+    margin: 0 5px;
+}
+
+.feedback form input[ type = submit ]{
+    width: 300px;
+    height: 50px;
+
+    background: var( --Major );
+    color: var( --Base );
+
+    border: 1px solid var( --Minor );
+    border-radius: 15px;
+
+    font-size: 32px;
+    font-weight: 800;
+}

@@ -2,11 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
-    --hu-white: #FFFFFF;
-    --hu-dark-blue: #1E1F25;
-    --hu-red-pink: #DC162D;
-    --hu-dark-cyan: #008F70;
-    --hu-cyan: #0BDBAE;
+    --Base: #FFFFFF;
+    --Minor: #002936;
+    --Major: #00BCF5;
 
     --hu-min-width: 100vw;
     --hu-min-height: 100vh;
@@ -20,15 +18,15 @@
 }
 
 body {
-    background: var( --hu-white );
+    background: var( --Base );
 }
 
 h1 {
-    font-size: 36px;
+    font-size: 2.5em;
 }
 
 h4 {
-    font-size: 20px;
+    font-size: 1.3em;
 }
 
 a {
@@ -45,8 +43,8 @@ header, footer {
     text-align: center;
     align-items: center;
 
-    background: var( --hu-dark-blue );
-    color: var( --hu-white );
+    background: var( --Minor );
+    color: var( --Base );
 }
 
 .logo {
@@ -67,7 +65,7 @@ header, footer {
 .vertical-line {
     width: 2px;
     height: 10vh;
-    background: var( --hu-white );
+    background: var( --Base );
 }
 
 header h1, footer h1 {

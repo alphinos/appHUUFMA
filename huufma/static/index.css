@@ -9,23 +9,31 @@
 
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .start .text {
     box-sizing: border-box;
     width: 50vw;
-    height: 40vh;
+    height: 50vh;
 
     text-align: center;
     margin: 40px;
 }
 
+.start .text h1 {
+    margin: 3vh 0;
+    color: var( --Major );
+    font-weight: 900;
+}
+
 .start .text h4 {
-    margin: 10px 0;
+    margin: 3vh 0;
+    color: var( --Major );
 }
 
 .start .text p {
-    margin: 10px 0;
+    margin: 3vh 0;
 }
 
 .show {
@@ -78,33 +86,33 @@
 .about-button {
     width: 200px;
     height: 48px;
-    background: var( --hu-red-pink );
+    background: var( --Major );
 }
 
 .contact-button {
-    background: var( --hu-dark-blue );
+    background: var( --Minor );
 }
 
 .about-button, .contact-button {
-    color: var( --hu-white );
+    color: var( --Base );
 }
 .about-button:hover {
-    background: var( --hu-white );
-    border: solid 1px var( --hu-dark-blue );
-    color: var( --hu-red-pink );
+    background: var( --Base );
+    border: solid 1px var( --Minor );
+    color: var( --Major );
 }
 
 .contact-button:hover {
-    background: var( --hu-white );
-    border: solid 1px var( --hu-dark-blue );
-    color: var( --hu-dark-blue );
+    background: var( --Base );
+    border: solid 1px var( --Minor );
+    color: var( --Minor );
 }
 
 
 /* About */
 .about {
     min-height: 100vh;
-    background: var( --hu-dark-blue );
+    background: var( --Minor );
 
     box-sizing: border-box;
 
@@ -120,9 +128,11 @@
 
     display: flex;
 
-    color: var( --hu-white );
-    width: 700px;
+    color: var( --Base );
+    width: 30vw;
     height: 100px;
+
+    margin: 2vh 30vw;
 
     justify-content: center;
     align-items: center;
@@ -147,7 +157,7 @@
 
     text-align: center;
     
-    background: var( --hu-white );
+    background: var( --Base );
     border-radius: 10px;
     box-shadow: 0 4px 40px rgba(100, 100, 100, 0.4);
 }
@@ -184,7 +194,7 @@
     text-align: left;
     margin: 0 auto;
 
-    color: var( --hu-red-pink );
+    color: var( --Major );
 }
 
 /* Contact */
@@ -192,36 +202,44 @@
     min-height: 100vh;
 
     box-sizing: border-box;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
 }
 
 .contact h1 {
     display: flex;
-    width: 700px;
+    width: 20vw;
     height: 100px;
 
     justify-content: center;
     align-items: center;
     text-align: center;
 
-    margin: 0 auto;
+    margin: 0 40vw;
 }
 
 .contact p {
     display: flex;
-    width: 800px;
+    width: 40vw;
     height: 50px;
 
     justify-content: center;
     align-items: center;
     text-align: center;
 
-    margin: 0 auto;
+    margin: 20px 30vw;
 }
 
 .contact form {
-    width: 660px;
+    width: 40vw;
     height: 330px;
-    margin: 0 auto;
+    margin: 0 30vw;
 
     display: flex;
     flex-wrap: wrap;
@@ -235,7 +253,7 @@
     display: flex;
     flex-wrap: wrap;
 
-    width: 320px;
+    width: 19vw;
 }
 
 .contact .message-input {
@@ -244,36 +262,37 @@
 }
 
 .contact .username-input {
-    margin-right: 10px;
+    margin-right: 1vw;
 }
 
 .contact .email-input {
-    margin-left: 10px;
+    margin-left: 1vw;
 }
 
 .contact .username-input input, .contact .email-input input {
-    width: 320px;
+    width: 19vw;
     height: 40px;
 }
 
 .contact #message {
-    width: 660px;
+    width: 40vw;
     height: 150px;
 }
 
 .contact input[ type = submit ]{
-    width: 200px;
+    width: 10vw;
     height: 50px;
 
-    background: var( --hu-red-pink );
+    border: 1px solid var( --Minor );
+    background: var( --Major );
     border-radius: 15px;
 
-    color: var( --hu-white );
+    color: var( --Base );
 }
 
 .horizontal-line {
     height: 2px;
-    width: 660px;
+    width: 50vw;
     background: var( --hu-dark-blue );
-    margin: 20px auto;
+    margin: 20px 25vw;
 }

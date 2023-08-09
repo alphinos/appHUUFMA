@@ -1,87 +1,156 @@
-{% extends "base.html" %}
+{% extends "base.html.jinja" %}
 
 {% block title %}Answer{% endblock %}
+{% block imports %}
+    <link rel = "stylesheet" href = "{{ url_for( 'static', filename = 'answer.css' ) }}" >
+{% endblock %}
 
 {% block content %}
 
-    <div>
-
-        <h1>UTI</h1>
-
-        {% for sol in solution[0] %}
-
-            <div>
-
-                <h4>{{ sol[0] }}</h4>
-                <h4>{{ sol[1] }}</h4>
-                <h4>{{ sol[2] }}</h4>
-                <h4>{{ sol[3] }}</h4>
-                <h4>{{ sol[4] }}</h4>
-            
-            </div>
-
-        {% endfor %}
-
+    <div class = "recomendation">
+    
+        <h1>Recomendações</h1>
+    
     </div>
 
-    <div>
+    <section class = "principal">
 
-        <h1>UTSI</h1>
+        <div class = "card">
 
-        {% for sol in solution[1] %}
+            <h1>UTI</h1>
 
-            <div>
+            {% for i, sol in enumerate( solution[0] ) %}
 
-                <h4>{{ sol[0] }}</h4>
-                <h4>{{ sol[1] }}</h4>
-                <h4>{{ sol[2] }}</h4>
-                <h4>{{ sol[3] }}</h4>
-                <h4>{{ sol[4] }}</h4>
-            
-            </div>
+                <div class = "row">
 
-        {% endfor %}
+                    <div class = "number">
+                        <h4>{{ i }}</h4>
+                    </div>
 
-    </div>
+                    <div class = "name">
+                        <h4>{{ sol[0] }}</h4>
+                    </div>
+                
+                </div>
 
-    <div>
+            {% endfor %}
 
-        <h1>UTP</h1>
+        </div>
 
-        {% for sol in solution[2] %}
+        <div class = "card">
 
-            <div>
+            <h1>UTSI</h1>
 
-                <h4>{{ sol[0] }}</h4>
-                <h4>{{ sol[1] }}</h4>
-                <h4>{{ sol[2] }}</h4>
-                <h4>{{ sol[3] }}</h4>
-                <h4>{{ sol[4] }}</h4>
-            
-            </div>
+            {% for i, sol in enumerate( solution[1] ) %}
 
-        {% endfor %}
+                <div class = "row">
 
-    </div>
+                    <div class = "number">
+                        <h4>{{ i }}</h4>
+                    </div>
 
-    <div>
+                    <div class = "name">
+                        <h4>{{ sol[0] }}</h4>
+                    </div>
+                
+                </div>
 
-        <h1>Não selecionados</h1>
+            {% endfor %}
 
-        {% for sol in solution[3] %}
+        </div>
 
-            <div>
+        <div class = "card">
 
-                <h4>{{ sol[0] }}</h4>
-                <h4>{{ sol[1] }}</h4>
-                <h4>{{ sol[2] }}</h4>
-                <h4>{{ sol[3] }}</h4>
-                <h4>{{ sol[4] }}</h4>
-            
-            </div>
+            <h1>UTP</h1>
 
-        {% endfor %}
+            {% for i, sol in enumerate( solution[2] ) %}
 
-    </div>
+                <div class = "row">
+
+                    <div class = "number">
+                        <h4>{{ i }}</h4>
+                    </div>
+
+                    <div class = "name">
+                        <h4>{{ sol[0] }}</h4>
+                    </div>
+                
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class = "card">
+
+            <h1>Não alocados</h1>
+
+            {% for i, sol in enumerate( solution[3] ) %}
+
+                <div class = "row">
+
+                    <div class = "number">
+                        <h4>{{ i }}</h4>
+                    </div>
+
+                    <div class = "name">
+                        <h4>{{ sol[0] }}</h4>
+                    </div>
+                
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class = "feedback">
+
+            <h5>Nos ajude a melhorar o modelo com o seu feedback</h5>
+            <h5>Você pretende seguir esta recomendação?</h5>
+
+            <form>
+
+                <div class = "selection">
+
+                    <div >
+                    
+                        <input name = "answer" type = "radio" value = "sim" >
+                        <label for = "sim" >Sim</label>
+                    
+                    </div>
+
+                    <div >
+                    
+                        <input name = "answer" type = "radio" value = "não" >
+                        <label for = "não" >Não</label>
+                    
+                    </div>
+
+                </div>            
+
+
+                <input name = "feedback" type = "submit" value = "Enviar" >
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <script>
+    
+        const radio_selectors = document.querySelectorAll( "input[type = 'radio']" )
+
+        for ( const r_selector of radio_selectors ){
+            r_selector.addEventListener( "click", function( event ){
+                radio_selectors.forEach( function ( item ) {
+                    if ( itemm != event.target ){
+                        item.checked = false
+                    }
+                } )
+            } )
+        }
+    
+    </script>
 
 {% endblock %}

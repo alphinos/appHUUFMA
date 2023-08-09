@@ -1,0 +1,264 @@
+
+input[ type = number ]::-webkit-inner-spin-button,
+input[ type = number ]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[ type = number ]{
+    -moz-appearance: textfield;
+}
+
+input[ type = submit ]:hover {
+    background: var( --Major );
+    color: var( --Minor );
+}
+
+.nInput {
+    width: 50px;
+    height: 40px;
+
+    text-align: center;
+
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+/* config */
+
+.config {
+    margin: 3vh 0;
+    
+    display: flex;
+
+    text-align: center;
+    align-items: center;
+}
+
+.config label {
+    font-size: 24px;
+}
+
+#config {
+    width: 90vw;
+    margin: 0 auto;
+
+    display: flex;
+
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+
+#config .setup {
+    width: 15vw;
+
+    display: flex;
+
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+#config .bed {
+    width: 10vw;
+    display: flex;
+
+    justify-content: flex-end;
+    text-align: center;
+    align-items: center;
+
+    margin-right: 1vw;
+}
+
+#config .bed label {
+    margin-right: 10px;
+}
+
+.unities {
+    display: flex;
+
+    justify-content: flex-end;
+    text-align: center;
+    align-items: center;
+}
+
+
+/* patients */
+
+.patients {
+    min-height: 50vh;
+    position: relative;
+}
+
+.patients form {
+    margin: 0 5vw;
+}
+
+.patients table {
+    min-height: 20vh;
+    /* margin-bottom: 20vh; */
+}
+
+.patients table, .patients th, .patients td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.patients th, .patients td {
+    height: 40px;
+}
+
+.patients tr:last-child td:last-child {
+    border-bottom-right-radius:15px;
+}
+
+.patients tr:last-child td:first-child {
+    border-bottom-left-radius:15px;
+}
+
+.patients tr:first-child th:first-child,
+.patients tr:first-child td:first-child {
+    border-top-left-radius:15px
+}
+
+.patients tr:first-child th:last-child,
+.patients tr:first-child td:last-child {
+    border-top-right-radius:15px
+}
+
+.patients table {
+    width: 90vw;
+
+    border-spacing: 0;
+    border-collapse: separate;
+    background: var( --Major );
+
+    border-radius: 15px;
+    overflow: hidden;
+
+    text-align: center;
+}
+
+.patients th {
+    color: var( --Base );
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.quad-cell {
+    width: 60px;
+    height: 60px;
+
+    text-align: center;
+    color: var( --Base );
+    font-size: 20px;
+}
+
+.name-cell input, .surviving-cell input, .priority-cell select {
+    width: 90%;
+    height: 70%;
+
+    border-radius: 15px;
+
+    background: var( --Minor );
+    border: 1px solid black;
+    color: var( --Base );
+
+    text-align: center;
+}
+
+.surviving-cell, .priority-cell {
+    width: 13vw;
+}
+
+.suggestion {
+    width: 20vw;
+    height: 50px;
+    background: var( --Major );
+
+    color: var( --Base );
+    font-size: 24px;
+    font-weight: 800;
+
+    border: 2px solid var( --Minor );
+    border-radius: 15px;
+
+    position: relative;
+
+    bottom: 20px;
+
+    margin: 10.5vh 0;
+}
+
+/* instances */
+
+/* .instances {
+    min-height: 20vh;
+} */
+
+.instances {
+    width: 35vw;
+    height: 20vh;
+    color: var( --Base );
+
+    text-align: center;
+    align-items: center;
+
+    position: absolute;
+
+    bottom: 0;
+    right: 5vw;
+
+    margin: 2vh 0;
+}
+
+.instances form {
+    width: 35vw;
+
+    text-align: center;
+    align-items: center;
+
+    margin: 2vh 0;
+}
+
+.instances .gen_parameter {
+    background: var( --Major );
+
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 2vh 0;
+
+    display: flex;
+
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.instances input[ type = 'submit' ]{
+    width: 20vw;
+    background: var( --Major );
+    height: 50px;
+
+    color: var( --Base );
+    font-size: 24px;
+    font-weight: 800;
+
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.instances input[ type = submit ]:hover {
+    background: var( --Major );
+    color: var( --Minor );
+}
+
+.instances .parameter {
+    width: 10vw;
+    margin: 0 1vw;
+}
+
+.instances .parameter label {
+    margin: 0 1vw;
+}

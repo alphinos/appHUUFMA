@@ -98,15 +98,19 @@ def solverHU( patients : list[ hu_util.Patient ], qtdUTI : int, qtdUTSI : int, q
     for j in J:
         for k in K_Types[j]:
             for i in I:
+                print( patients[i].name, patients[i].surviving_chance, patients[i].uti_chance, patients[i].utsi_chance, patients[i].utp_chance )
                 if x[i, j, k].X == 1:
                     patients[ i ].allocated = True
                     patient_ = [ patients[i].name, patients[i].surviving_chance, patients[i].uti_chance, patients[i].utsi_chance, patients[i].utp_chance ]
                     suggestion[ j ].append( patient_ )
-                    print( patient_[0], patient_[1], patient_[2], patient_[3], patient_[4] )
+    
+    print()
+    print()
 
     for patient in patients:
+        print( patient.name, patient.surviving_chance, patient.uti_chance, patient.utsi_chance, patient.utp_chance )
         if patient.allocated == False:
-            patient_ = [ patients[i].name, patients[i].surviving_chance, patients[i].uti_chance, patients[i].utsi_chance, patients[i].utp_chance ]
+            patient_ = [ patient.name, patient.surviving_chance, patient.uti_chance, patient.utsi_chance, patient.utp_chance ]
             non_allocated.append( patient_ )
     
     return suggestion

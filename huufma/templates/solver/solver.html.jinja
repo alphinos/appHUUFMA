@@ -1,159 +1,246 @@
-{% extends "base.html" %}
+{% extends "base.html.jinja" %}
 
 {% block title %}Solver{% endblock %}
+{% block imports %}
+    <link rel = "stylesheet" href = "{{ url_for( 'static', filename = 'solver.css' ) }}" >
+{% endblock %}
 
 {% block content %}
 
-    <section>
+    <section class = "config" >
 
-            <div>
-                <form name = "config" id = "patients" method = "post">
-                    <label for = "n_patients">Número de pacientes</label>
-                    <input name = "n_patients" id = "n_patients" type = "number" value = "{{n_patients}}">
+        <form name = "config" id = "config" method = "post">
 
+            <div class = "setup">
+            
+                <label for = "n_patients">Número de pacientes</label>
+                <input class = "nInput" name = "n_patients" type = "number" value = "{{n_patients}}" min = "0" >
+            
+            </div>
+
+            <div class = "unities">
+
+                <div class = "bed">
+                
                     <label for = "p_uti">Nº UTI</label>
-                    <input name = "p_uti" id = "n_uti" type = "number" value = "{{n_uti}}">
+                    <input class = "nInput" name = "p_uti" type = "number" value = "{{n_uti}}" min = "0" >
+                
+                </div>
 
+
+                <div class = "bed">
+                
                     <label for = "p_utsi">Nº UTSI</label>
-                    <input name = "p_utsi" id = "n_utsi" type = "number" value = "{{n_utsi}}">
+                    <input class = "nInput" name = "p_utsi" type = "number" value = "{{n_utsi}}" min = "0" >
+                
+                </div>
 
+
+                <div class = "bed">
+                
                     <label for = "p_utp">Nº UTP</label>
-                    <input name = "p_utp" id = "n_utp" type = "number" value = "{{n_utp}}">
-
-                </form>
+                    <input class = "nInput" name = "p_utp" type = "number" value = "{{n_utp}}" min = "0" >
+                
+                </div>
 
             </div>
+
+        </form>
+
 
     </section>
 
-    <section>
+    <section class = "patients">
 
-        <div>
-
-            <div>
-                <h4></h4>
-            </div>
-            <h4>Nome do paciente</h4>
-            <h4>Probabilidade de Sobrevivência</h4>
-            <h4>Prioridade: UTI</h4>
-            <h4>Prioridade: UTSI</h4>
-            <h4>Prioridade: UTP</h4>
-
-        </div>
-
-        {% if patients %}
         <form name = "patients" method = "post">
 
-            <input name = "total_patients" type = "hidden" value = "{{n_patients}}">
-            <input name = "beds_uti" type = "hidden" value = "{{n_uti}}">
-            <input name = "beds_utsi" type = "hidden" value = "{{n_utsi}}">
-            <input name = "beds_utp" type = "hidden" value = "{{n_utp}}">
+            <table>
+            
+                <input name = "total_patients" type = "hidden" value = "{{n_patients}}">
+                <input name = "beds_uti" type = "hidden" value = "{{n_uti}}">
+                <input name = "beds_utsi" type = "hidden" value = "{{n_utsi}}">
+                <input name = "beds_utp" type = "hidden" value = "{{n_utp}}">
 
-            {% for i, patient in enumerate( patients ) %}
+                <tr>
+                
+                    <th class = "quad-cell"></th>
+                    <th class = "name-cell">Nome do paciente</th>
+                    <th class = "surviving-cell">Probabilidade de Sobrevivência</th>
+                    <th class = "priority-cell">Prioridade: UTI</th>
+                    <th class = "priority-cell">Prioridade: UTSI</th>
+                    <th class = "priority-cell">Prioridade: UTP</th>
+                
+                </tr>
 
-            <div>
+            {% if patients %}
+                {% for i, patient in enumerate( patients ) %}
 
-                <div>
-                    <h4>{{ i + 1 }}</h4>
-                </div>
-                <input name = "name_{{ i + 1 }}" type = "text" value = "{{ patient.name }}">
-                <input name = "surviving_chance{{ i + 1 }}" type = "number" value = "{{ patient.surviving_chance }}">
-                <select id = "select_uti" name = "select_uti_{{ i + 1 }}">
+                <tr>
 
-                    <option value="0"></option>
-                    {% if ranges is not none %}
-                        {% for i in range( 5, 0, -1) %}
-                            {% if patient.uti_chance == i %}
-                                <option value="{{i}}" selected>{{ ranges[ i ] }}</option>
+                    <td class = "quad-cell">
+                        <h4>{{ i + 1 }}</h4>
+                    </td>
+
+                    <td class = "name-cell">
+                        <input name = "name_{{ i + 1 }}" type = "text" value = "{{ patient[0] }}">
+                    </td>
+
+                    <td class = "surviving-cell">
+                        <input name = "surviving_chance{{ i + 1 }}" type = "number" value = "{{ patient[1] }}" min = "0" >
+                    </td>
+
+                    
+                    <td class = "priority-cell">
+                    
+                        <select id = "select_uti" name = "select_uti_{{ i + 1 }}" required>
+
+                            <option value=""></option>
+                            {% if ranges is not none %}
+                                {% for i in range( 5, 0, -1) %}
+                                    {% if patient[2] == i %}
+                                        <option value="{{i}}" selected>{{ ranges[ i ] }}</option>
+                                    {% else %}
+                                        <option value="{{i}}">{{ ranges[ i ] }}</option>
+                                    {% endif %}
+                                {% endfor %}
                             {% else %}
-                                <option value="{{i}}">{{ ranges[ i ] }}</option>
+                                <option value="5">Muito alta</option>
+                                <option value="4">Alta</option>
+                                <option value="3">Média</option>
+                                <option value="2">Baixa</option>
+                                <option value="1">Muito Baixa</option>
                             {% endif %}
-                        {% endfor %}
-                    {% else %}
-                        <option value="5">Muito alta</option>
-                        <option value="4">Alta</option>
-                        <option value="3">Média</option>
-                        <option value="2">Baixa</option>
-                        <option value="1">Muito Baixa</option>
-                    {% endif %}
 
-                </select>
+                        </select>
 
-                <select id = "select_utsi" name = "select_utsi_{{ i + 1 }}">
+                    </td>
 
-                    <option value="0"></option>
-                    {% if ranges is not none %}
-                        {% for i in range( 5, 0, -1) %}
-                            {% if patient.uti_chance == i %}
-                                <option value="{{i}}" selected>{{ ranges[ i ] }}</option>
+                    <td class = "priority-cell">
+
+                        <select id = "select_utsi" name = "select_utsi_{{ i + 1 }}" required>
+
+                            <option value="0"></option>
+                            {% if ranges is not none %}
+                                {% for i in range( 5, 0, -1) %}
+                                    {% if patient[3] == i %}
+                                        <option value="{{i}}" selected>{{ ranges[ i ] }}</option>
+                                    {% else %}
+                                        <option value="{{i}}">{{ ranges[ i ] }}</option>
+                                    {% endif %}
+                                {% endfor %}
                             {% else %}
-                                <option value="{{i}}">{{ ranges[ i ] }}</option>
+                                <option value="5">Muito alta</option>
+                                <option value="4">Alta</option>
+                                <option value="3">Média</option>
+                                <option value="2">Baixa</option>
+                                <option value="1">Muito Baixa</option>
                             {% endif %}
-                        {% endfor %}
-                    {% else %}
-                        <option value="5">Muito alta</option>
-                        <option value="4">Alta</option>
-                        <option value="3">Média</option>
-                        <option value="2">Baixa</option>
-                        <option value="1">Muito Baixa</option>
-                    {% endif %}
 
-                </select>
+                        </select>
+                    
+                    </td>
 
-                <select id = "select_utp" name = "select_utp_{{ i + 1 }}">
+                    <td class = "priority-cell">
 
-                    <option value="0"></option>
-                    {% if ranges is not none %}
-                        {% for i in range( 5, 0, -1) %}
-                            {% if patient.uti_chance == i %}
-                                <option value="{{i}}" selected>{{ ranges[ i ] }}</option>
+                        <select id = "select_utp" name = "select_utp_{{ i + 1 }}" required>
+
+                            <option value="0"></option>
+                            {% if ranges is not none %}
+                                {% for i in range( 5, 0, -1) %}
+                                    {% if patient[4] == i %}
+                                        <option value="{{i}}" selected>{{ ranges[ i ] }}</option>
+                                    {% else %}
+                                        <option value="{{i}}">{{ ranges[ i ] }}</option>
+                                    {% endif %}
+                                {% endfor %}
                             {% else %}
-                                <option value="{{i}}">{{ ranges[ i ] }}</option>
+                                <option value="5">Muito alta</option>
+                                <option value="4">Alta</option>
+                                <option value="3">Média</option>
+                                <option value="2">Baixa</option>
+                                <option value="1">Muito Baixa</option>
                             {% endif %}
-                        {% endfor %}
-                    {% else %}
-                        <option value="5">Muito alta</option>
-                        <option value="4">Alta</option>
-                        <option value="3">Média</option>
-                        <option value="2">Baixa</option>
-                        <option value="1">Muito Baixa</option>
-                    {% endif %}
 
-                </select>
-    
-            </div>
+                        </select>
+                    
+                    </td>
 
-            {% endfor %}
+                </tr>
 
+                {% endfor %}
+            {% else %}
+
+                <tr>
+                
+                    <td class = "quad-cell"></td>
+                    <td class = "name-cell"></td>
+                    <td class = "surviving-cell"></td>
+                    <td class = "priority-cell"></td>
+                    <td class = "priority-cell"></td>
+                    <td class = "priority-cell"></td>
+                
+                </tr>
+
+                <tr>
+                
+                    <td class = "quad-cell"></td>
+                    <td class = "name-cell"></td>
+                    <td class = "surviving-cell"></td>
+                    <td class = "priority-cell"></td>
+                    <td class = "priority-cell"></td>
+                    <td class = "priority-cell"></td>
+                
+                </tr>
+
+            {% endif %}
+            </table>
 
             <input name = "suggestion" type = "hidden" value = "suggestion">
-            <input type = "submit" id = "suggestion" value = "Gerar sugestões">
-
+            <input type = "submit" class = "suggestion" value = "Gerar sugestões">
         </form>
-        {% endif %}
+
+        <section class = "instances">
+
+            <form name = "gen" method = "post">
+
+                <div class = "gen_parameter">
+                
+                    <div class = "parameter" >
+                    
+                        <label for = "int_uti">Nº UTI</label>
+                        <input class = "nInput" name = "int_uti" id = "int_uti" type = "number" value = "0" min = "0" >
+                    
+                    </div>
+
+
+                    <div class = "parameter" >
+                    
+                        <label for = "int_utsi">Nº UTSI</label>
+                        <input class = "nInput" name = "int_utsi" id = "int_utsi" type = "number" value = "0" min = "0" >
+                    
+                    </div>
+
+
+                    <div class = "parameter" >
+                    
+                        <label for = "int_utp">Nº UTP</label>
+                        <input class = "nInput" name = "int_utp" id = "int_utp" type = "number" value = "0" min = "0" >
+                    
+                    </div>
+
+                
+                </div>
+
+                <input name = "instances" type = "hidden" value = "instances">
+
+                <input type = "submit" id = "submit" value = "Gerar cenário de simulação">
+                
+            </form>
+
+        </section>
 
     </section>
 
-    <section>
-
-        <form name = "gen" method = "post">
-
-            <label for = "int_uti">Nº UTI</label>
-            <input name = "int_uti" id = "int_uti" type = "number" value = "0">
-
-            <label for = "int_utsi">Nº UTSI</label>
-            <input name = "int_utsi" id = "int_utsi" type = "number" value = "0">
-
-            <label for = "int_utp">Nº UTP</label>
-            <input name = "int_utp" id = "int_utp" type = "number" value = "0">
-
-            <input name = "instances" type = "hidden" value = "instances">
-
-            <input type = "submit" id = "submit" value = "Gerar instâncias">
-            
-        </form>
-
-    </section>
 
     <script>
 
@@ -163,30 +250,35 @@
             }
         }
         
-        const patients = document.querySelector( "#patients" )
+        const patients = document.querySelector( "#config" )
         patients.addEventListener( "keydown", submitForm )
-        patients.addEventListener( "change", function( event ){
+        patients.firstChild.addEventListener( "change", function( event ){
 
-            if ( Number( patients.firstChild.textContent ) < 0 ){
-                patients.firstChild.textContent = 0
-                return
+            if ( Number( patients.firstChild.value ) < 0 || isNaN( patients.firstChild.value ) ){
+                patients.firstChild.value = 0
             }
+
             patients.submit()
         })
 
-        const submits = document.querySelectorAll( "#submit" )
+        for ( const patient of patients ){
+            patient.addEventListener( "change", function(){
+                if ( Number( patient.value ) < 0 || isNaN( patient.value ) ){
+                    patient.value = 0
+                    return
+                }
 
-        for ( const sub of submits ){
-            sub.addEventListener( "click", function(){
-                const { config, patients, gen } = document.forms
+                patients.submit()
+            } )
+        }
 
-                fetch( config.action, {
-                    method: config.method,
-                    header: { "content-type": config.enctype },
-                    body: new FormData( config )
-                } )
-
-                sub.submit()
+        const numberInputs = document.querySelectorAll( "input[type=number]" )
+        for ( const nInput of numberInputs ){
+            nInput.addEventListener( "change", function(){
+                if ( Number( nInput.value ) < 0 || isNaN( nInput.value ) ){
+                    nInput.value = 0
+                    return
+                }
             } )
         }
 
